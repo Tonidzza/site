@@ -4,17 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DELAZ — Agência</title>
+<title>DELAZ — AGÊNCIA</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-  font-family:'Montserrat',sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background:#02040a;
   color:#fff;
+  overflow-x:hidden;
+}
+
+h1,h2{
+  font-family:'Playfair Display', serif;
+}
+
+/* PARTICLES */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
 }
 
 /* HERO */
@@ -32,8 +45,8 @@ header{
 }
 
 header h1{
-  font-size:3.5em;
-  font-weight:700;
+  font-size:4.5em;
+  letter-spacing:3px;
 }
 
 header span{color:#00aaff}
@@ -41,89 +54,119 @@ header span{color:#00aaff}
 header p{
   margin-top:15px;
   color:#aaa;
-  font-size:1.1em;
-  max-width:500px;
 }
 
-/* BOTÃO */
 .btn{
   margin-top:30px;
   padding:16px 40px;
-  border-radius:12px;
+  border-radius:14px;
   text-decoration:none;
   color:#fff;
   background:linear-gradient(135deg,#00aaff,#6d7f95);
-  font-weight:600;
-  transition:.3s;
+  transition:.4s;
 }
 
 .btn:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 30px rgba(0,170,255,0.5);
+  transform:scale(1.08);
+  box-shadow:0 0 40px rgba(0,170,255,0.6);
 }
 
 /* SECTIONS */
 section{
-  padding:80px 20px;
-  max-width:1100px;
+  padding:100px 20px;
+  max-width:1200px;
   margin:auto;
-  text-align:center;
+  opacity:0;
+  transform:translateY(60px);
+  transition:1s;
+}
+
+section.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
 h2{
-  font-size:2em;
-  margin-bottom:40px;
+  text-align:center;
+  margin-bottom:60px;
+  font-size:2.5em;
 }
 
 /* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
 }
 
 .card{
-  background:rgba(20,20,30,0.6);
-  padding:30px;
-  border-radius:15px;
-  transition:.3s;
+  background:rgba(15,20,35,0.6);
+  backdrop-filter:blur(12px);
+  padding:35px;
+  border-radius:20px;
+  transition:.4s;
 }
 
 .card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 25px rgba(0,170,255,0.2);
+  transform:translateY(-10px);
+  box-shadow:0 0 40px rgba(0,170,255,0.3);
 }
 
-/* PORTFÓLIO */
+/* PORTFOLIO */
 .portfolio img{
   width:100%;
-  border-radius:12px;
+  border-radius:15px;
 }
 
-/* CTA */
-.cta{
-  background:linear-gradient(135deg,#0a1a2f,#02040a);
-  padding:60px 20px;
-  border-radius:20px;
+/* BEFORE AFTER */
+.compare{
+  position:relative;
+  max-width:800px;
+  margin:auto;
+  overflow:hidden;
 }
 
-/* WHATSAPP */
+.compare img{
+  width:100%;
+  display:block;
+}
+
+.after{
+  position:absolute;
+  top:0;
+  left:0;
+  width:50%;
+  height:100%;
+  overflow:hidden;
+}
+
+.slider{
+  position:absolute;
+  top:0;
+  left:50%;
+  width:3px;
+  height:100%;
+  background:#00aaff;
+  cursor:ew-resize;
+}
+
+/* FLOAT BUTTON */
 .whats{
   position:fixed;
-  bottom:20px;
-  right:20px;
+  bottom:25px;
+  right:25px;
   background:#00aaff;
-  padding:15px;
+  padding:18px;
   border-radius:50%;
   color:#fff;
+  font-size:22px;
   text-decoration:none;
-  font-size:20px;
-  box-shadow:0 0 20px #00aaff;
+  box-shadow:0 0 25px #00aaff;
 }
 
 footer{
   text-align:center;
-  padding:30px;
+  padding:40px;
   color:#666;
 }
 </style>
@@ -131,23 +174,25 @@ footer{
 
 <body>
 
+<canvas id="bg"></canvas>
+
 <header>
   <h1>DELAZ <span>AGÊNCIA</span></h1>
-  <p>Transformo perfis comuns em máquinas de atrair clientes através de design estratégico</p>
-  <a class="btn" href="https://wa.me/SEUNUMERO">Quero mais clientes</a>
+  <p>Design que domina atenção e gera clientes</p>
+  <a class="btn" href="https://wa.me/SEUNUMERO">Falar no WhatsApp</a>
 </header>
 
 <section>
-  <h2>O que eu faço</h2>
+  <h2>Serviços</h2>
   <div class="grid">
-    <div class="card">Posts profissionais que chamam atenção</div>
-    <div class="card">Design focado em conversão</div>
-    <div class="card">Estratégia para crescimento no Instagram</div>
+    <div class="card">Design de alto impacto</div>
+    <div class="card">Posts que vendem</div>
+    <div class="card">Estratégia de Instagram</div>
   </div>
 </section>
 
 <section>
-  <h2>Resultados visuais</h2>
+  <h2>Portfólio</h2>
   <div class="grid portfolio">
     <div class="card"><img src="https://i.imgur.com/ZZzdvRu.png"></div>
     <div class="card"><img src="https://i.imgur.com/Q30sDC3.png"></div>
@@ -155,19 +200,94 @@ footer{
   </div>
 </section>
 
-<section class="cta">
-  <h2>Seu perfil pode vender todos os dias</h2>
-  <p style="color:#aaa;margin-top:10px;">
-    Eu cuido do design. Você foca em fechar clientes.
-  </p>
-  <a class="btn" href="https://wa.me/5527997608980">Falar comigo agora</a>
+<section>
+  <h2>Antes / Depois</h2>
+
+  <div class="compare" id="compare">
+    <img src="https://i.imgur.com/XpH6pLI.png">
+    <div class="after" id="after">
+      <img src="https://i.imgur.com/XoWVC1r.png">
+    </div>
+    <div class="slider" id="slider"></div>
+  </div>
 </section>
 
-<a class="whats" href="https://wa.me/5527997608980">💬</a>
+<a class="whats" href="https://wa.me/SEUNUMERO">💬</a>
 
 <footer>
 © 2026 DELAZ
 </footer>
+
+<script>
+
+// PARTICLES
+const c=document.getElementById('bg');
+const ctx=c.getContext('2d');
+c.width=window.innerWidth;
+c.height=window.innerHeight;
+
+let p=[];
+for(let i=0;i<100;i++){
+ p.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2})
+}
+
+function draw(){
+ ctx.clearRect(0,0,c.width,c.height);
+ ctx.fillStyle='#00aaff';
+
+ p.forEach(e=>{
+  ctx.beginPath();
+  ctx.arc(e.x,e.y,e.r,0,Math.PI*2);
+  ctx.fill();
+  e.y+=0.2;
+  if(e.y>c.height)e.y=0;
+ });
+
+ requestAnimationFrame(draw);
+}
+draw();
+
+// SCROLL
+const secs=document.querySelectorAll('section');
+window.addEventListener('scroll',()=>{
+ secs.forEach(s=>{
+  if(s.getBoundingClientRect().top<window.innerHeight-100){
+   s.classList.add('show')
+  }
+ });
+});
+
+// BEFORE / AFTER (DESKTOP + MOBILE)
+const slider=document.getElementById('slider');
+const after=document.getElementById('after');
+const compare=document.getElementById('compare');
+
+let isDragging=false;
+
+function move(x){
+ const rect=compare.getBoundingClientRect();
+ let pos=x-rect.left;
+
+ if(pos<0) pos=0;
+ if(pos>rect.width) pos=rect.width;
+
+ slider.style.left=pos+'px';
+ after.style.width=pos+'px';
+}
+
+// mouse
+slider.addEventListener('mousedown',()=>isDragging=true);
+window.addEventListener('mouseup',()=>isDragging=false);
+window.addEventListener('mousemove',(e)=>{
+ if(isDragging) move(e.clientX);
+});
+
+// touch (CELULAR)
+window.addEventListener('touchmove',(e)=>{
+ move(e.touches[0].clientX);
+});
+
+</script>
 
 </body>
 </html>

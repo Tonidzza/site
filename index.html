@@ -7,23 +7,19 @@
 <title>DELAZ — AGÊNCIA</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
-<style> *{margin:0;padding:0;box-sizing:border-box}
-  
-  body{
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
   font-family: 'Inter', sans-serif;
   background:#02040a;
   color:#fff;
   overflow-x:hidden;
 }
 
-h1{
-  font-weight:700;
-  letter-spacing:1px;
-}
-
-h2{
-  font-weight:600;
+h1,h2{
+  font-family:'Inter', sans-serif;
 }
 
 /* PARTICLES */
@@ -50,7 +46,8 @@ header{
 
 header h1{
   font-size:4.5em;
-  letter-spacing:3px;
+  letter-spacing:2px;
+  font-weight:700;
 }
 
 header span{color:#00aaff}
@@ -58,6 +55,7 @@ header span{color:#00aaff}
 header p{
   margin-top:15px;
   color:#aaa;
+  font-weight:300;
 }
 
 .btn{
@@ -68,6 +66,7 @@ header p{
   color:#fff;
   background:linear-gradient(135deg,#00aaff,#6d7f95);
   transition:.4s;
+  font-weight:600;
 }
 
 .btn:hover{
@@ -93,7 +92,8 @@ section.show{
 h2{
   text-align:center;
   margin-bottom:60px;
-  font-size:2.5em;
+  font-size:2.3em;
+  font-weight:600;
 }
 
 /* GRID */
@@ -183,7 +183,7 @@ footer{
 <header>
   <h1>DELAZ <span>AGÊNCIA</span></h1>
   <p>Design que domina atenção e gera clientes</p>
-  <a class="btn" href="https://wa.me/5527997608980">Falar no WhatsApp</a>
+  <a class="btn" href="https://wa.me/SEUNUMERO">Falar no WhatsApp</a>
 </header>
 
 <section>
@@ -216,7 +216,7 @@ footer{
   </div>
 </section>
 
-<a class="whats" href="https://wa.me/5527997608980">💬</a>
+<a class="whats" href="https://wa.me/SEUNUMERO">💬</a>
 
 <footer>
 © 2026 DELAZ
@@ -261,7 +261,7 @@ window.addEventListener('scroll',()=>{
  });
 });
 
-// BEFORE / AFTER (DESKTOP + MOBILE)
+// BEFORE / AFTER
 const slider=document.getElementById('slider');
 const after=document.getElementById('after');
 const compare=document.getElementById('compare');
@@ -279,14 +279,12 @@ function move(x){
  after.style.width=pos+'px';
 }
 
-// mouse
 slider.addEventListener('mousedown',()=>isDragging=true);
 window.addEventListener('mouseup',()=>isDragging=false);
 window.addEventListener('mousemove',(e)=>{
  if(isDragging) move(e.clientX);
 });
 
-// touch (CELULAR)
 window.addEventListener('touchmove',(e)=>{
  move(e.touches[0].clientX);
 });
